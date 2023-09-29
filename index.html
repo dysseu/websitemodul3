@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modul 3</title>
+    <link href="css/style.css" rel="stylesheet"  >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>HTML Multimedia, YouTube, and APIs</h1>
+    
+    <!-- Audio Example -->
+    <h2>HTML5 Audio</h2>
+    <audio controls>
+        <source src=" https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+        <source src="horse.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Video Example -->
+    <h2>HTML5 Video</h2>
+    <video width="400" controls>
+        <source src="mov_bbb.mp4" type="video/mp4">
+        <source src="mov_bbb.ogg" type="video/ogg">
+        Your browser does not support HTML video.
+    </video>
+
+    <!-- YouTube Embedding Example -->
+    <h2>YouTube Video</h2>
+    <iframe width="560" height="315" src="https://youtu.be/E-d68Wf6ebs?si=CDi18dGnjiLjSR3w" frameborder="0" allowfullscreen></iframe>
+
+    <!-- HTML Geolocation API Example -->
+    <h2>Geolocation</h2>
+    <p>Click the button to get your coordinates.</p>
+    <button onclick="getLocation()">Get Coordinates</button>
+    <p id="demo"></p>
+
+    <!-- HTML Drag and Drop API Example -->
+    <h2>Drag and Drop</h2>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="img_w3slogo.gif" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+    </div>
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+
+    <!-- Footer -->
+    <footer>
+        Gladys Sumenge - 210211060202
+    </footer>
+
+
+    <script>
+        // JavaScript for Geolocation API
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("demo").innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+        }
+
+        // JavaScript for Drag and Drop
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+
+</body>
+</html>
